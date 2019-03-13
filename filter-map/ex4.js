@@ -60,12 +60,21 @@ En prenant les deux exemples d'arguments d'entrée, on obtiendrait ceci en sorti
     persons: [ 'Ross Howard' ]
   }
 ]
-
 */
 
-function getActivitiesMembers(activities, persons) {
-}
-
+const getActivitiesMembers = (activities, persons) => activities
+  .map((activity) => {
+    const names = []
+    persons.map((person) => {
+      if (person.activities.includes(activity)) {
+        names.push(person.name)
+      }
+    })
+    return {
+      activity: activity,
+      persons: names
+    }
+  });
 
 
 // Ne pas modifier l'export

@@ -49,8 +49,17 @@ Sortie attendue:
   [{ Bordeaux: 12 }, { Lille: 12 }]
 
 */
-
-function getStudentsPerCurriculum(campuses, curriculumName) {
+const getStudentsPerCurriculum = (campuses, curriculumName) => {
+  let array = []
+  campuses.forEach(campus => campus.curriculums
+    .forEach(curriculum => {
+      if (curriculum.name === curriculumName) {
+        let obj = {}
+        obj[campus.city] = curriculum.numStudents
+        array.push(obj)
+      }
+    })
+  )
+  return array
 }
-
 module.exports = getStudentsPerCurriculum;

@@ -11,7 +11,7 @@ Exemple d'entrée:
 1. des commentaires (on est resté soft pour ne pas heurter les oreilles chastes)
 [
   "Very useful tutorial, thank you so much!",
-  "React is not a damn framework, it's a LIBRARY"
+  "React is not a damn framework, it's a LIBRARY",
   "Why you put bloody kitten pictures in a tech tutorial is beyond me!",
   "Which one is better, React or Angular?",
   'There is no "better", it depends on your use case, DAMN YOU'
@@ -26,8 +26,18 @@ Sortie attendue:
 
 */
 
-function filterOffensiveComments(comments, bannedWords) {
-}
+const hasKeyword = (item, keyword) => item.toLowerCase().split(" ").includes(keyword)
+
+const filterOffensiveComments = (comments, bannedWords) => comments.filter((comment) => {
+  let bool = true;
+  bannedWords.forEach((keyword) => {
+    if (hasKeyword(comment, keyword)) {
+      bool = false;
+    }
+  })
+  return bool
+
+})
 
 // Ne pas modifier l'export
 module.exports = filterOffensiveComments;

@@ -24,7 +24,10 @@ Sortie attendue:
 
 */
 
-function getCampusesTeachingReact(campuses) {
-}
+const hasKeyword = (item, keyword) => item.includes(keyword)
+
+const getCampusesTeachingReact = campuses => campuses
+  .filter(campuse => hasKeyword(campuse.curriculums, 'JS/React'))
+  .map(value => value.city)
 
 module.exports = getCampusesTeachingReact;
